@@ -1,5 +1,7 @@
 import crypto from 'node:crypto';
 
+import { md5 } from '../../lib/encrypt';
+
 interface App {
   id: number;
   name: string;
@@ -41,9 +43,9 @@ interface AppDetail {
 }
 
 function calcSignature(json: string): string {
-  const source = process.env.SIGNATURE_HEAD + json + process.env.SIGNATURE_END;
+  const source = process.env.APP_SIGNATURE_HEAD + json + process.env.APP_SIGNATURE_END;
 
-  return crypto.createHash('md5').update(source, 'utf8').digest('hex');
+  return md5(source);
 }
 
 export async function getList(category: string, platform: string): Promise<App[]> {
