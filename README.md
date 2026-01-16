@@ -1,6 +1,6 @@
-# BYD 应用市场
+# BYD 应用/主题/壁纸市场
 
-https://bydapps.crazyurus.com/
+https://bydstore.crazyurus.com/
 
 ## Setup
 

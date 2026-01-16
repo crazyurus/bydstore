@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'BYD 应用市场',
+  title: 'BYD 应用/主题/壁纸市场',
   description: ''
 };
 
