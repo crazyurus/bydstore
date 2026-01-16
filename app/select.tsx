@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 
 import {
   Select,
@@ -31,15 +31,19 @@ function SelectPlatform(props: Props): JSX.Element {
 
   return (
     <Select value={props.platform} onValueChange={handleChange}>
-      <SelectTrigger className="w-60">
+      <SelectTrigger className="w-60 cursor-pointer">
         <SelectValue placeholder="请选择 DiLink 平台" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>DiLink 平台</SelectLabel>
           {platforms.map((item, index) => (
-            <SelectItem key={item.platform} value={(index + 1).toString()}>
-              {item.platform}
+            <SelectItem key={item.name} value={(index + 1).toString()}>
+              <div className="flex items-center gap-1">
+                <span>{item.name}</span>
+                {item.version ? <span className="text-sm text-muted-foreground">/</span> : null}
+                <span className="text-sm text-muted-foreground">{item.version}</span>
+              </div>
             </SelectItem>
           ))}
         </SelectGroup>

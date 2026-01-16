@@ -6,7 +6,6 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, 
 
 import categories from '../data/category.json';
 import { getList } from '../lib/app';
-import SelectPlatform from '../select';
 import ActionButton from './action';
 import Toggle from './toggle';
 
@@ -28,7 +27,6 @@ async function AppStore(props: Props): Promise<JSX.Element> {
     <>
       <Toggle category={category} />
       <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight mt-10 mb-4">{title}</h1>
-      <SelectPlatform platform={platform} />
       <ItemGroup className="mt-4 w-full gap-6">
         {apps.map(item => (
           <Item className="flex-col items-start sm:flex-row sm:items-center" key={item.id} variant="outline" asChild>
