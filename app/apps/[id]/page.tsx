@@ -77,7 +77,7 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <NavigateBack>应用列表</NavigateBack>
+              <NavigateBack>应用</NavigateBack>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
