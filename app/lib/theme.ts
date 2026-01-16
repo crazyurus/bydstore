@@ -49,9 +49,10 @@ function getPlatformParameters(platform: string): {
   const jwtToken = process.env[`JWT_TOKEN_${platform}`]!;
   const decodeData = jwt.decode(jwtToken) as { sub: string };
   const payload = JSON.parse(decodeData.sub);
+  const vehicle = ['', '', '71', '', '140', '', '145', ''];
 
   return {
-    vType: payload.vt.toString(),
+    vType: vehicle[Number(platform)],
     pType: payload.platform,
     vin: payload.vin
   };

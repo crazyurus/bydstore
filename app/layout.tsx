@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { JSX, PropsWithChildren } from 'react';
 
+import { Toaster } from '@/components/ui/sonner';
+
 import Progress from './progress';
 
 import './globals.css';
@@ -34,6 +36,7 @@ function RootLayout(props: PropsWithChildren): JSX.Element {
         </div>
         <Progress />
         <Analytics />
+        <Toaster />
       </body>
     </html>
   );

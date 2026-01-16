@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+import { addNumberSeparator } from '../../../lib/format';
 import { getDetail } from '../../lib/app';
 import NavigateBack from './back';
 import Images from './images';
@@ -51,10 +52,6 @@ function formatDateTime(date: Date): string {
     minute: '2-digit',
     second: '2-digit'
   });
-}
-
-function addNumberSeparator(count: number): string {
-  return count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

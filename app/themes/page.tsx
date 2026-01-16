@@ -3,6 +3,7 @@ import type { JSX } from 'react';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
+import { addNumberSeparator } from '../../lib/format';
 import { getList } from '../lib/theme';
 import ActionButton from './action';
 
@@ -44,7 +45,7 @@ async function ThemeStore(props: Props): Promise<JSX.Element> {
             <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
               <div className="flex justify-between items-center">
                 <span>{item.price > 0 ? `¥${item.price}` : '免费'}</span>
-                <span>{item.totalLoad} 次下载</span>
+                <span>{addNumberSeparator(item.totalLoad)} 次下载</span>
               </div>
             </CardContent>
             <CardFooter className="p-4 pt-0 mt-auto">

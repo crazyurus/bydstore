@@ -1,6 +1,7 @@
 'use client';
 
 import { JSX, type MouseEvent } from 'react';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 
@@ -12,7 +13,7 @@ function ActionButton(props: Props): JSX.Element {
   const handleDownload = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    location.assign(props.url);
+    toast.info('暂不支持下载');
   };
 
   return (
