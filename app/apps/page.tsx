@@ -12,14 +12,14 @@ import Toggle from './toggle';
 interface Props {
   searchParams: Promise<{
     category?: string;
-    platform?: string;
+    platform: string;
   }>;
 }
 
 async function AppStore(props: Props): Promise<JSX.Element> {
   const searchParams = await props.searchParams;
   const category = searchParams.category || categories[0].id.toString();
-  const platform = searchParams.platform || '4';
+  const platform = searchParams.platform;
   const title = categories.find(item => item.id.toString() === category)?.name;
   const apps = await getList(category, platform);
 

@@ -14,13 +14,13 @@ const modules = [
   {
     title: '主题',
     icon: Palette,
-    href: '/themes',
+    href: '/themes?type=theme',
     color: 'text-purple-500'
   },
   {
     title: '壁纸',
     icon: Image,
-    href: '/wallpapers',
+    href: '/themes?type=wallpaper',
     color: 'text-green-500'
   }
 ];
@@ -47,7 +47,7 @@ async function EntryPage(props: Props): Promise<JSX.Element> {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {modules.map(item => {
           const Icon = item.icon;
-          const href = `${item.href}?platform=${platform}`;
+          const href = item.href + (item.href.includes('?') ? '&' : '?') + `platform=${platform}`;
 
           return (
             <Link

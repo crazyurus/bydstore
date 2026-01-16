@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'byd-store-cdn-rel.byd.auto'
+      },
+      {
+        protocol: 'https',
+        hostname: 'profilesys.bydauto.com.cn'
       }
     ]
   }

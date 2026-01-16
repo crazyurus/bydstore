@@ -64,12 +64,11 @@ export async function getList(type: 'theme' | 'wallpaper', platform: string): Pr
   const businessJson = JSON.stringify(businessData);
   const encryptKey = process.env.THEME_ENCRYPT_KEY!;
   const baseParam = {
-    userName: 'Cr4zy Uru5',
+    userName: 'theme_user',
     enCodeData: encrypt(businessJson, encryptKey),
-    sign: md5(businessJson),
+    sign: md5(businessJson).toUpperCase(),
     uuid: crypto.randomUUID()
   };
-
   const response = await fetch(`${process.env.THEME_STORE_URL}/getAppPopularInfo`, {
     method: 'POST',
     headers: {
@@ -84,6 +83,7 @@ export async function getList(type: 'theme' | 'wallpaper', platform: string): Pr
 
     if (decryptedData) {
       const resultList = JSON.parse(decryptedData);
+
       if (Array.isArray(resultList)) {
         return resultList;
       } else {
