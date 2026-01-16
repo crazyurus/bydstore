@@ -5,7 +5,7 @@ import { JSX } from 'react';
 
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
-import categories from './data/category.json';
+import categories from '../data/category.json';
 
 interface Props {
   category: string;

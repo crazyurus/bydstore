@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-import { getDetail } from '../../lib/data';
+import { getDetail } from '../../lib/app';
 import NavigateBack from './back';
 import Images from './images';
 

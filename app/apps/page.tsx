@@ -4,17 +4,17 @@ import { JSX } from 'react';
 
 import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from '@/components/ui/item';
 
+import categories from '../data/category.json';
+import { getList } from '../lib/app';
+import SelectPlatform from '../select';
 import ActionButton from './action';
-import categories from './data/category.json';
-import { getList } from './lib/data';
-import SelectPlatform from './select';
 import Toggle from './toggle';
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     platform?: string;
-  };
+  }>;
 }
 
 async function AppStore(props: Props): Promise<JSX.Element> {
