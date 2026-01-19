@@ -18,8 +18,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { addNumberSeparator } from '@/lib/format';
 
-import { addNumberSeparator } from '../../../lib/format';
 import { getDetail } from '../../lib/app';
 import NavigateBack from './back';
 import Images from './images';
@@ -86,7 +86,7 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
       <div className="flex sm:gap-8 gap-4">
         <div className="shrink-0">
           <Image
-            className="rounded-md border sm:w-30 sm:h-30 w-20 h-20 bg-gray-50 dark:bg-gray-800"
+            className="sm:w-30 sm:h-30 w-20 h-20"
             width={120}
             height={120}
             src={detail.appInfo.icon}

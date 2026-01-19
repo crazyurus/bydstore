@@ -33,14 +33,7 @@ async function AppStore(props: Props): Promise<JSX.Element> {
             <Link href={`/apps/${item.id}`}>
               <div className="flex gap-4 grow sm:w-0">
                 <ItemMedia>
-                  <Image
-                    className="border rounded-md w-16 h-16 bg-gray-50 dark:bg-gray-800"
-                    src={item.icon}
-                    alt={item.name}
-                    width={64}
-                    height={64}
-                    loading="lazy"
-                  />
+                  <Image className="w-16 h-16" src={item.icon} alt={item.name} width={64} height={64} loading="lazy" />
                 </ItemMedia>
                 <ItemContent>
                   <ItemTitle className="text-base">{item.name}</ItemTitle>
