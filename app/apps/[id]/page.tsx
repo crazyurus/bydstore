@@ -168,7 +168,11 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
               </Field>
               <Field>
                 <FieldLabel>评分</FieldLabel>
-                <div className="flex text-yellow-500 dark:text-yellow-400">{Array(detail.score).fill(<Star />)}</div>
+                <div className="flex text-yellow-500 dark:text-yellow-400">
+                  {Array.from({ length: detail.score }, (_, i) => (
+                    <Star key={i} />
+                  ))}
+                </div>
               </Field>
               {detail.privacy_policy ? (
                 <Field>
