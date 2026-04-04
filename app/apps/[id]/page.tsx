@@ -110,7 +110,7 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
                   {formatSize(detail.appInfo.size)}
                 </div>
                 <div className="rounded-full border subtle-divider bg-white/8 px-4 py-2 text-sm text-white/78">
-                  Android {detail.sdk}+
+                  SDK {detail.sdk}+
                 </div>
               </div>
             </div>
