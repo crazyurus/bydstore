@@ -31,7 +31,7 @@ function SelectPlatform(props: Props): JSX.Element {
 
   return (
     <Select value={props.platform} onValueChange={handleChange}>
-      <SelectTrigger className="w-60 cursor-pointer">
+      <SelectTrigger className="w-full cursor-pointer sm:w-72">
         <SelectValue placeholder="请选择 DiLink 平台" />
       </SelectTrigger>
       <SelectContent>
@@ -39,10 +39,10 @@ function SelectPlatform(props: Props): JSX.Element {
           <SelectLabel>DiLink 平台</SelectLabel>
           {platforms.map((item, index) => (
             <SelectItem key={item.name} value={(index + 1).toString()}>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1.5">
                 <span>{item.name}</span>
-                {item.version ? <span className="text-sm text-muted-foreground">/</span> : null}
-                <span className="text-sm text-muted-foreground">{item.version}</span>
+                {item.version ? <span className="text-sm text-white/52">/</span> : null}
+                <span className="text-sm text-white/68">{item.version}</span>
               </div>
             </SelectItem>
           ))}

@@ -42,81 +42,129 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 1.375rem;
+  --background: #5d7183;
+  --foreground: #f4f8fc;
+  --card: rgb(245 250 255 / 0.14);
+  --card-foreground: #f4f8fc;
+  --popover: #6a7f91;
+  --popover-foreground: #f4f8fc;
+  --primary: #f1f6fc;
+  --primary-foreground: #425565;
+  --secondary: rgb(255 255 255 / 0.12);
+  --secondary-foreground: #f8fbff;
+  --muted: rgb(255 255 255 / 0.08);
+  --muted-foreground: #eaf1f7;
+  --accent: rgb(255 255 255 / 0.16);
+  --accent-foreground: #ffffff;
+  --destructive: #f87171;
+  --border: rgb(255 255 255 / 0.14);
+  --input: rgb(255 255 255 / 0.12);
+  --ring: rgb(244 248 252 / 0.45);
+  --chart-1: #d6e7ff;
+  --chart-2: #8fe0ff;
+  --chart-3: #9bc5ff;
+  --chart-4: #c7d9ff;
+  --chart-5: #ffd9b1;
+  --sidebar: rgb(255 255 255 / 0.1);
+  --sidebar-foreground: #f4f8fc;
+  --sidebar-primary: #f1f6fc;
+  --sidebar-primary-foreground: #425565;
+  --sidebar-accent: rgb(255 255 255 / 0.14);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.12);
+  --sidebar-ring: rgb(244 248 252 / 0.45);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --background: #5d7183;
+    --foreground: #f4f8fc;
+    --card: rgb(245 250 255 / 0.14);
+    --card-foreground: #f4f8fc;
+    --popover: #6a7f91;
+    --popover-foreground: #f4f8fc;
+    --primary: #f1f6fc;
+    --primary-foreground: #425565;
+    --secondary: rgb(255 255 255 / 0.12);
+    --secondary-foreground: #f8fbff;
+    --muted: rgb(255 255 255 / 0.08);
+    --muted-foreground: #eaf1f7;
+    --accent: rgb(255 255 255 / 0.16);
+    --accent-foreground: #ffffff;
+    --destructive: #f87171;
+    --border: rgb(255 255 255 / 0.14);
+    --input: rgb(255 255 255 / 0.12);
+    --ring: rgb(244 248 252 / 0.45);
+    --chart-1: #d6e7ff;
+    --chart-2: #8fe0ff;
+    --chart-3: #9bc5ff;
+    --chart-4: #c7d9ff;
+    --chart-5: #ffd9b1;
+    --sidebar: rgb(255 255 255 / 0.1);
+    --sidebar-foreground: #f4f8fc;
+    --sidebar-primary: #f1f6fc;
+    --sidebar-primary-foreground: #425565;
+    --sidebar-accent: rgb(255 255 255 / 0.14);
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgb(255 255 255 / 0.12);
+    --sidebar-ring: rgb(244 248 252 / 0.45);
   }
 }
 
 @layer base {
+  html {
+    @apply min-h-full scroll-smooth;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply min-h-screen bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top left, rgb(255 255 255 / 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgb(206 225 255 / 0.16), transparent 24%),
+      linear-gradient(180deg, #6c8090 0%, #5e7384 42%, #556977 100%);
+    background-attachment: fixed;
   }
+  ::selection {
+    background: rgb(255 255 255 / 0.22);
+    color: #ffffff;
+  }
+  a,
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@utility surface-panel {
+  @apply border border-white/12 bg-white/10 backdrop-blur-2xl shadow-[0_24px_80px_rgba(23,35,46,0.22)];
+}
+
+@utility surface-panel-strong {
+  @apply border border-white/16 bg-white/14 backdrop-blur-2xl shadow-[0_32px_90px_rgba(23,35,46,0.3)];
+}
+
+@utility surface-tile {
+  @apply border subtle-divider bg-[#6a7d8e]/55 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.14)];
+}
+
+@utility surface-highlight {
+  @apply bg-linear-to-br from-white/22 via-white/8 to-transparent;
+}
+
+@utility page-title {
+  @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl;
+}
+
+@utility page-subtitle {
+  @apply text-sm leading-6 text-white/84 sm:text-base;
+}
+
+@utility page-section {
+  @apply rounded-[28px] border subtle-divider bg-white/6 p-5 backdrop-blur-xl sm:p-7;
+}
+
+@utility subtle-divider {
+  @apply border-white/10;
 }

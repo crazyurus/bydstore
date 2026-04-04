@@ -22,52 +22,52 @@ function Images(props: Props): JSX.Element {
   const { images } = props;
 
   return (
-    <>
-      <ScrollArea>
-        <div className="flex gap-3 pl-8 sm:pl-0">
-          {images.map(item => (
-            <Dialog key={item}>
-              <DialogTrigger asChild>
+    <ScrollArea>
+      <div className="flex gap-4">
+        {images.map(item => (
+          <Dialog key={item}>
+            <DialogTrigger asChild>
+              <div className="surface-panel group relative shrink-0 overflow-hidden rounded-[26px]">
                 <Image
                   src={item}
                   alt="screenshot"
-                  className="snap-start sm:snap-align-none scroll-ml-8 sm:scroll-ml-0 object-cover rounded-md cursor-pointer shrink-0"
-                  width={288}
-                  height={162}
+                  className="h-[170px] w-[304px] cursor-pointer object-cover transition-transform duration-500 group-hover:scale-105"
+                  width={304}
+                  height={170}
                   loading="lazy"
                 />
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>查看图片</DialogTitle>
-                </DialogHeader>
-                <Image
-                  key={item}
-                  src={item}
-                  alt="screenshot"
-                  className="object-cover"
-                  width={462}
-                  height={260}
-                  loading="lazy"
-                />
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button className="cursor-pointer" variant="secondary">
-                      关闭
-                    </Button>
-                  </DialogClose>
-                  <Button className="cursor-pointer" asChild>
-                    <Link href={item}>下载</Link>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-slate-950/30 to-transparent" />
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl">
+              <DialogHeader>
+                <DialogTitle>查看图片</DialogTitle>
+              </DialogHeader>
+              <Image
+                key={item}
+                src={item}
+                alt="screenshot"
+                className="max-h-[75vh] w-full rounded-[22px] object-cover"
+                width={1100}
+                height={620}
+                loading="lazy"
+              />
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button className="cursor-pointer" variant="secondary">
+                    关闭
                   </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          ))}
-          <div className="shrink-0 w-5 sm:hidden" />
-        </div>
-        <ScrollBar className="sm:visible invisible" orientation="horizontal" />
-      </ScrollArea>
-    </>
+                </DialogClose>
+                <Button className="cursor-pointer" asChild>
+                  <Link href={item}>下载</Link>
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
+      <ScrollBar className="sm:visible invisible" orientation="horizontal" />
+    </ScrollArea>
   );
 }
 

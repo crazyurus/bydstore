@@ -5,84 +5,92 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function Loading() {
   return (
-    <>
-      <div className="mb-6 flex items-center">
-        <Skeleton className="h-6 w-12 rounded animate-pulse"></Skeleton>
-        <Skeleton className="h-6 w-8 rounded mx-2 animate-pulse"></Skeleton>
-        <Skeleton className="h-6 w-24 rounded animate-pulse"></Skeleton>
+    <div className="flex flex-col gap-6">
+      <div className="flex items-center gap-2">
+        <Skeleton className="h-6 w-12 rounded-full bg-white/10" />
+        <Skeleton className="h-6 w-4 rounded-full bg-white/8" />
+        <Skeleton className="h-6 w-24 rounded-full bg-white/10" />
       </div>
-      <div className="flex sm:gap-8 gap-4">
-        <div className="shrink-0">
-          <Skeleton className="rounded-md sm:w-30 sm:h-30 w-20 h-20 animate-pulse"></Skeleton>
-        </div>
-        <div className="grow">
-          <div className="flex items-center gap-3">
-            <Skeleton className="sm:text-xl text-lg font-bold h-7 w-64 rounded animate-pulse"></Skeleton>
-            <Skeleton className="h-6 w-24 rounded-full animate-pulse"></Skeleton>
+      <section className="surface-panel-strong rounded-4xl px-6 py-6 sm:px-8 sm:py-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex gap-4 sm:gap-6">
+            <Skeleton className="h-20 w-20 rounded-[28px] bg-white/12 sm:h-30 sm:w-30" />
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-8 w-64 rounded-full bg-white/12" />
+                <Skeleton className="h-8 w-24 rounded-full bg-white/10" />
+              </div>
+              <Skeleton className="h-6 w-full max-w-xl rounded-full bg-white/8" />
+              <div className="flex flex-wrap gap-3">
+                <Skeleton className="h-10 w-32 rounded-full bg-white/10" />
+                <Skeleton className="h-10 w-24 rounded-full bg-white/10" />
+                <Skeleton className="h-10 w-28 rounded-full bg-white/10" />
+              </div>
+            </div>
           </div>
-          <Skeleton className="mt-1 h-6 w-full rounded animate-pulse"></Skeleton>
-          <div className="flex items-center gap-4 mt-7 sm:static sm:p-0 sm:border-t-0 fixed left-0 bottom-0 border-t w-full px-8 py-4 bg-white dark:bg-zinc-950 z-10">
-            <Skeleton className="h-9 w-24 rounded-md animate-pulse"></Skeleton>
-            <Skeleton className="h-6 w-32 rounded animate-pulse"></Skeleton>
+          <div className="flex shrink-0 flex-col gap-4 sm:min-w-36">
+            <Skeleton className="h-11 w-32 rounded-full bg-white/12" />
           </div>
         </div>
-      </div>
-      <Tabs className="mt-8 w-full grow" defaultValue="introduction">
-        <TabsList className="mx-auto sm:mx-0">
+      </section>
+      <Tabs className="w-full grow" defaultValue="introduction">
+        <TabsList className="justify-start overflow-x-auto w-fit mx-auto">
           <TabsTrigger className="cursor-pointer" value="introduction">
-            <Skeleton className="w-6" />
+            <Skeleton className="h-4 w-8 rounded-full bg-white/16" />
           </TabsTrigger>
           <TabsTrigger className="cursor-pointer" value="detail">
-            <Skeleton className="w-6" />
+            <Skeleton className="h-4 w-8 rounded-full bg-white/12" />
           </TabsTrigger>
           <TabsTrigger className="cursor-pointer" value="permission">
-            <Skeleton className="w-6" />
+            <Skeleton className="h-4 w-8 rounded-full bg-white/12" />
           </TabsTrigger>
         </TabsList>
         <TabsContent value="introduction">
-          <Skeleton className="h-6 w-full rounded animate-pulse"></Skeleton>
-          <Skeleton className="mt-2 h-6 w-3/4 rounded animate-pulse"></Skeleton>
-          <div className="mt-4 -mx-8 sm:mx-0">
-            <div className="flex gap-3 overflow-hidden">
-              <Skeleton className="snap-start sm:snap-align-none scroll-ml-8 sm:scroll-ml-0 border object-cover rounded-md cursor-pointer shrink-0 w-[288] h-[162] animate-pulse"></Skeleton>
-              <Skeleton className="snap-start sm:snap-align-none scroll-ml-8 sm:scroll-ml-0 border object-cover rounded-md cursor-pointer shrink-0 w-[288] h-[162] animate-pulse"></Skeleton>
-              <Skeleton className="snap-start sm:snap-align-none scroll-ml-8 sm:scroll-ml-0 border object-cover rounded-md cursor-pointer shrink-0 w-[288] h-[162] animate-pulse"></Skeleton>
+          <div className="page-section">
+            <Skeleton className="h-6 w-full rounded-full bg-white/10" />
+            <Skeleton className="mt-2 h-6 w-3/4 rounded-full bg-white/8" />
+            <div className="mt-5 flex gap-4 overflow-hidden">
+              <Skeleton className="h-[170px] w-[304px] shrink-0 rounded-[26px] bg-white/10" />
+              <Skeleton className="h-[170px] w-[304px] shrink-0 rounded-[26px] bg-white/10" />
+              <Skeleton className="h-[170px] w-[304px] shrink-0 rounded-[26px] bg-white/10" />
             </div>
           </div>
         </TabsContent>
         <TabsContent value="detail">
           <FieldGroup>
-            <div className="flex flex-col gap-4 sm:grid sm:grid-cols-3 sm:gap-8">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => (
                 <Field key={i}>
                   <FieldLabel>
-                    <Skeleton className="h-4 w-24 rounded animate-pulse"></Skeleton>
+                    <Skeleton className="h-4 w-24 rounded-full bg-white/10" />
                   </FieldLabel>
-                  <Skeleton className="h-4 w-40 rounded animate-pulse"></Skeleton>
+                  <Skeleton className="h-4 w-40 rounded-full bg-white/8" />
                 </Field>
               ))}
             </div>
           </FieldGroup>
         </TabsContent>
         <TabsContent value="permission">
-          <Accordion type="single" collapsible className="w-full">
-            {[1, 2, 3].map(i => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger>
-                  <div className="flex grow justify-between cursor-pointer">
-                    <Skeleton className="h-4 w-24 rounded animate-pulse"></Skeleton>
-                    <Skeleton className="h-4 w-32 rounded animate-pulse hidden sm:block"></Skeleton>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
-                  <Skeleton className="h-4 w-full rounded animate-pulse"></Skeleton>
-                  <Skeleton className="h-4 w-full rounded animate-pulse"></Skeleton>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="page-section">
+            <Accordion type="single" collapsible className="w-full">
+              {[1, 2, 3].map(i => (
+                <AccordionItem key={i} value={`item-${i}`}>
+                  <AccordionTrigger>
+                    <div className="flex grow cursor-pointer justify-between gap-4">
+                      <Skeleton className="h-4 w-24 rounded-full bg-white/10" />
+                      <Skeleton className="hidden h-4 w-32 rounded-full bg-white/8 sm:block" />
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="flex flex-col gap-4 text-balance">
+                    <Skeleton className="h-4 w-full rounded-full bg-white/8" />
+                    <Skeleton className="h-4 w-full rounded-full bg-white/8" />
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 }

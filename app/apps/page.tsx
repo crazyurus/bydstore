@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { JSX } from 'react';
 
+import { Badge } from '@/components/ui/badge';
 import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from '@/components/ui/item';
 
 import categories from '../data/category.json';
@@ -24,31 +25,49 @@ async function AppStore(props: Props): Promise<JSX.Element> {
   const apps = await getList(category, platform);
 
   return (
-    <>
-      <Toggle category={category} />
-      <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight mt-10 mb-4">{title}</h1>
-      <ItemGroup className="mt-4 w-full gap-6">
+    <div className="flex flex-col gap-6">
+      <section className="surface-panel-strong rounded-[30px] px-6 py-6 sm:px-8 sm:py-7">
+        <div className="space-y-3">
+          <Badge variant="secondary">应用市场</Badge>
+          <h1 className="page-title">{title}</h1>
+          <p className="page-subtitle max-w-2xl">
+            以更清晰的卡片层级展示应用信息，保留当前信息结构与跳转方式，减少额外操作。
+          </p>
+        </div>
+      </section>
+      <div className="p-2 sm:p-2.5">
+        <div className="mx-auto w-fit">
+          <Toggle category={category} />
+        </div>
+      </div>
+      <ItemGroup className="w-full gap-4">
         {apps.map(item => (
-          <Item className="flex-col items-start sm:flex-row sm:items-center" key={item.id} variant="outline" asChild>
+          <Item
+            className="flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between"
+            key={item.id}
+            variant="outline"
+            asChild>
             <Link href={`/apps/${item.id}`}>
-              <div className="flex gap-4 grow sm:w-0">
-                <ItemMedia>
-                  <Image className="w-16 h-16" src={item.icon} alt={item.name} width={64} height={64} loading="lazy" />
+              <div className="flex grow gap-4 sm:w-0">
+                <ItemMedia variant="image" className="size-16">
+                  <Image className="size-16" src={item.icon} alt={item.name} width={64} height={64} loading="lazy" />
                 </ItemMedia>
                 <ItemContent>
-                  <ItemTitle className="text-base">{item.name}</ItemTitle>
-                  <ItemDescription className="text-xs">{item.version}</ItemDescription>
-                  <ItemDescription className="line-clamp-1 break-all">{item.introduction}</ItemDescription>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <ItemTitle>{item.name}</ItemTitle>
+                    <Badge variant="outline">{item.version}</Badge>
+                  </div>
+                  <ItemDescription className="line-clamp-2 break-all">{item.introduction}</ItemDescription>
                 </ItemContent>
               </div>
               <ItemActions>
-                <ActionButton url={item.download} />
+                <ActionButton />
               </ItemActions>
             </Link>
           </Item>
         ))}
       </ItemGroup>
-    </>
+    </div>
   );
 }
 

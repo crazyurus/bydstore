@@ -69,8 +69,8 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
   const detail = await getDetail(params.id);
 
   return (
-    <>
-      <Breadcrumb className="mb-6">
+    <div className="flex flex-col gap-6">
+      <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
@@ -83,38 +83,50 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex sm:gap-8 gap-4">
-        <div className="shrink-0">
-          <Image
-            className="sm:w-30 sm:h-30 w-20 h-20"
-            width={120}
-            height={120}
-            src={detail.appInfo.icon}
-            alt="app-icon"
-            loading="eager"
-          />
-        </div>
-        <div className="grow">
-          <div className="flex items-center gap-3">
-            <div className="sm:text-xl text-lg font-bold">{detail.appInfo.name}</div>
-            <Badge variant="secondary">{detail.appInfo.classification_name}</Badge>
+      <section className="surface-panel-strong rounded-4xl px-6 py-6 sm:px-8 sm:py-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex gap-4 sm:gap-6">
+            <div className="h-fit shrink-0 overflow-hidden rounded-[28px] border subtle-divider bg-white/10 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+              <Image
+                className="h-20 w-20 rounded-[20px] sm:h-30 sm:w-30"
+                width={120}
+                height={120}
+                src={detail.appInfo.icon}
+                alt="app-icon"
+                loading="eager"
+              />
+            </div>
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <h1 className="text-2xl font-semibold text-white sm:text-3xl">{detail.appInfo.name}</h1>
+                <Badge variant="secondary">{detail.appInfo.classification_name}</Badge>
+              </div>
+              <p className="max-w-2xl text-sm leading-7 text-white/82 sm:text-base">{detail.appInfo.introduction}</p>
+              <div className="flex flex-wrap gap-3">
+                <div className="rounded-full border subtle-divider bg-white/8 px-4 py-2 text-sm text-white/78">
+                  {addNumberSeparator(detail.download_counts)} 次下载
+                </div>
+                <div className="rounded-full border subtle-divider bg-white/8 px-4 py-2 text-sm text-white/78">
+                  {formatSize(detail.appInfo.size)}
+                </div>
+                <div className="rounded-full border subtle-divider bg-white/8 px-4 py-2 text-sm text-white/78">
+                  Android {detail.sdk}+
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="mt-1 text-muted-foreground line-clamp-2 sm:text-base text-sm">
-            {detail.appInfo.introduction}
-          </div>
-          <div className="flex items-center gap-4 mt-7 sm:static sm:p-0 sm:border-t-0 fixed left-0 bottom-0 border-t w-full px-8 py-4 bg-white dark:bg-zinc-950 z-10">
+          <div className="flex shrink-0 flex-col gap-4 sm:min-w-36">
             <Button className="cursor-pointer" asChild>
               <Link href={detail.appInfo.download}>
                 <Download />
-                下载
+                下载应用
               </Link>
             </Button>
-            <div className="text-sm text-muted-foreground">{addNumberSeparator(detail.download_counts)} 次下载</div>
           </div>
         </div>
-      </div>
-      <Tabs className="mt-8 w-full grow" defaultValue="introduction">
-        <TabsList className="mx-auto sm:mx-0">
+      </section>
+      <Tabs className="w-full grow" defaultValue="introduction">
+        <TabsList className="justify-start overflow-x-auto w-fit mx-auto">
           <TabsTrigger className="cursor-pointer" value="introduction">
             介绍
           </TabsTrigger>
@@ -126,49 +138,51 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="introduction">
-          <div className="mt-3 whitespace-pre-wrap">{decode(detail.description.replaceAll('&amp;', '&'))}</div>
-          <div className="mt-4 -mx-8 sm:mx-0">
+          <div className="page-section space-y-5">
+            <div className="whitespace-pre-wrap text-sm leading-7 text-white/84 sm:text-base">
+              {decode(detail.description.replaceAll('&amp;', '&'))}
+            </div>
             <Images images={detail.images.map(item => item.image_path)} />
           </div>
         </TabsContent>
         <TabsContent value="detail">
-          <FieldGroup className="mt-3">
-            <div className="flex flex-col gap-4 sm:grid sm:grid-cols-3 sm:gap-8 ">
+          <FieldGroup>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {detail.app_developer ? (
                 <Field>
                   <FieldLabel>开发者</FieldLabel>
-                  <div>{detail.app_developer}</div>
+                  <div className="text-sm leading-6 text-white">{detail.app_developer}</div>
                 </Field>
               ) : null}
               {detail.icp ? (
                 <Field>
                   <FieldLabel>备案号</FieldLabel>
-                  <div>{detail.icp}</div>
+                  <div className="text-sm leading-6 text-white">{detail.icp}</div>
                 </Field>
               ) : null}
               <Field>
                 <FieldLabel>发布时间</FieldLabel>
-                <div>{formatDateTime(new Date(detail.add_time))}</div>
+                <div className="text-sm leading-6 text-white">{formatDateTime(new Date(detail.add_time))}</div>
               </Field>
               <Field>
                 <FieldLabel>包名</FieldLabel>
-                <div>{detail.appInfo.package_name}</div>
+                <div className="text-sm leading-6 text-white">{detail.appInfo.package_name}</div>
               </Field>
               <Field>
                 <FieldLabel>版本</FieldLabel>
-                <div>{detail.appInfo.version}</div>
+                <div className="text-sm leading-6 text-white">{detail.appInfo.version}</div>
               </Field>
               <Field>
                 <FieldLabel>大小</FieldLabel>
-                <div>{formatSize(detail.appInfo.size)}</div>
+                <div className="text-sm leading-6 text-white">{formatSize(detail.appInfo.size)}</div>
               </Field>
               <Field>
                 <FieldLabel>兼容性</FieldLabel>
-                <div>Android {detail.sdk} 及以上</div>
+                <div className="text-sm leading-6 text-white">Android {detail.sdk} 及以上</div>
               </Field>
               <Field>
                 <FieldLabel>评分</FieldLabel>
-                <div className="flex text-yellow-500 dark:text-yellow-400">
+                <div className="flex text-amber-300">
                   {Array.from({ length: detail.score }, (_, i) => (
                     <Star key={i} />
                   ))}
@@ -177,7 +191,11 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
               {detail.privacy_policy ? (
                 <Field>
                   <FieldLabel>隐私协议</FieldLabel>
-                  <Link className="text-blue-500 dark:text-blue-400" href={detail.privacy_policy} target="_blank">
+                  <Link
+                    className="text-sm text-white underline underline-offset-4"
+                    href={detail.privacy_policy}
+                    target="_blank"
+                    rel="noreferrer">
                     查看
                   </Link>
                 </Field>
@@ -186,24 +204,26 @@ async function AppDetail(props: Props): Promise<JSX.Element> {
           </FieldGroup>
         </TabsContent>
         <TabsContent value="permission">
-          <Accordion type="single" collapsible className="w-full">
-            {detail.permissions.map(item => (
-              <AccordionItem key={item.permission_en} value={item.permission_en}>
-                <AccordionTrigger>
-                  <div className="flex grow justify-between cursor-pointer">
-                    <div>{item.permission_cn}</div>
-                    <div className="font-normal text-muted-foreground hidden sm:block">{item.permission_en}</div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
-                  {item.permission_intro}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="page-section">
+            <Accordion type="single" collapsible className="w-full">
+              {detail.permissions.map(item => (
+                <AccordionItem key={item.permission_en} value={item.permission_en}>
+                  <AccordionTrigger>
+                    <div className="flex grow cursor-pointer justify-between gap-4">
+                      <div>{item.permission_cn}</div>
+                      <div className="hidden font-normal text-white/58 sm:block">{item.permission_en}</div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="flex flex-col gap-4 text-balance">
+                    {item.permission_intro}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 }
 
