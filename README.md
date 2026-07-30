@@ -1,7 +1,5 @@
 # BYD 应用/主题/壁纸市场
 
-https://bydstore.crazyurus.com/
-
 ## Setup
 
 Install the dependencies:
