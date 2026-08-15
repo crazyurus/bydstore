@@ -14,7 +14,7 @@ function AccordionItem({ className, ...props }: React.ComponentProps<typeof Acco
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn('surface-panel mb-3 overflow-hidden rounded-[24px]  subtle-divider px-5 last:mb-0', className)}
+      className={cn('surface-panel mb-3 overflow-hidden px-5 last:mb-0', className)}
       {...props}
     />
   );

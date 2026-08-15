@@ -14,7 +14,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'inline-flex h-13 w-fit items-center justify-center gap-2 rounded-full border  subtle-divider bg-white/8 p-1.5 text-white/60 backdrop-blur-xl',
+        'inline-flex h-12 w-fit items-center justify-center gap-1 rounded-lg border subtle-divider bg-[#5d707b]/58 p-1 text-white/64',
         className
       )}
       {...props}
@@ -27,7 +27,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-full border border-transparent px-4 py-2 text-sm font-medium whitespace-nowrap text-white/68 transition-all duration-200 focus-visible:border-ring focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-white/12 data-[state=active]:bg-white/16 data-[state=active]:text-white data-[state=active]:shadow-[0_10px_24px_rgba(23,35,46,0.18)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
+        'inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-5 py-2 text-sm font-medium whitespace-nowrap text-white/72 transition-colors focus-visible:border-ring focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-[#dfe4ec] data-[state=active]:text-[#2e3d45] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
         className
       )}
       {...props}
@@ -39,7 +39,7 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn('flex-1 pt-4 outline-none data-[state=inactive]:hidden', className)}
+      className={cn('flex-1 pt-3 outline-none data-[state=inactive]:hidden', className)}
       {...props}
     />
   );

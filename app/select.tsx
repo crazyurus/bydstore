@@ -41,8 +41,8 @@ function SelectPlatform(props: Props): JSX.Element {
             <SelectItem key={item.name} value={(index + 1).toString()}>
               <div className="flex items-center gap-1.5">
                 <span>{item.name}</span>
-                {item.version ? <span className="text-sm text-white/52">/</span> : null}
-                <span className="text-sm text-white/68">{item.version}</span>
+                {item.version ? <span className="text-sm text-white/48">/</span> : null}
+                <span className="text-sm text-white/62">{item.version}</span>
               </div>
             </SelectItem>
           ))}

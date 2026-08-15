@@ -5,17 +5,15 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-transparent text-sm font-medium tracking-[0.02em] transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 aria-invalid:border-destructive",
+  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-transparent text-sm font-medium transition-colors duration-200 outline-none disabled:pointer-events-none disabled:opacity-50 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground shadow-[0_16px_36px_rgba(23,35,46,0.22)] hover:-translate-y-0.5 hover:bg-white/95',
+        default: 'bg-primary text-primary-foreground shadow-[0_8px_18px_rgba(42,54,61,0.12)] hover:bg-white',
         destructive:
-          'bg-destructive text-white shadow-[0_14px_32px_rgba(248,113,113,0.3)] hover:-translate-y-0.5 hover:bg-destructive/90 focus-visible:ring-destructive/20',
-        outline:
-          'border-white/14 bg-white/8 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] hover:-translate-y-0.5 hover:bg-white/14 hover:text-white',
-        secondary: 'bg-white/12 text-secondary-foreground hover:-translate-y-0.5 hover:bg-white/18',
+          'bg-destructive text-white shadow-[0_8px_18px_rgba(122,47,43,0.18)] hover:bg-destructive/90 focus-visible:ring-destructive/20',
+        outline: 'border-white/18 bg-white/8 text-white hover:bg-white/16 hover:text-white',
+        secondary: 'bg-[#60737e]/74 text-secondary-foreground hover:bg-[#dfe5ed] hover:text-[#314049]',
         ghost: 'bg-transparent text-white/70 hover:bg-white/10 hover:text-white',
         link: 'text-primary underline-offset-4 hover:underline'
       },

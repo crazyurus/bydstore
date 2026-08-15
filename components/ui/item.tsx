@@ -16,12 +16,12 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
 }
 
 const itemVariants = cva(
-  'group/item surface-panel flex flex-wrap items-center rounded-[26px] text-sm text-white transition-all duration-200 [a]:transition-all outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'group/item surface-panel flex flex-wrap items-center text-sm text-white transition-colors duration-200 [a]:transition-all outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   {
     variants: {
       variant: {
         default: 'bg-white/8',
-        outline: 'border-white/12 bg-white/10 hover:-translate-y-0.5 hover:bg-white/14',
+        outline: 'border-white/12 bg-white/10 hover:bg-white/14',
         muted: 'bg-white/12'
       },
       size: {
@@ -61,9 +61,9 @@ const itemMediaVariants = cva(
     variants: {
       variant: {
         default: 'bg-transparent',
-        icon: "size-8 rounded-2xl border  subtle-divider bg-white/10 [&_svg:not([class*='size-'])]:size-4",
+        icon: "size-8 rounded-lg border subtle-divider bg-white/10 [&_svg:not([class*='size-'])]:size-4",
         image:
-          'size-12 overflow-hidden rounded-[18px] border  subtle-divider bg-white/10 [&_img]:size-full [&_img]:object-cover'
+          'size-12 overflow-hidden rounded-lg border subtle-divider bg-white/10 [&_img]:size-full [&_img]:object-cover'
       }
     },
     defaultVariants: {

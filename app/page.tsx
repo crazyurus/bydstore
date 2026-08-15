@@ -1,33 +1,33 @@
-import { AppWindow, Image, Palette } from 'lucide-react';
+import { AppWindow, ArrowRight, Image as ImageIcon, Palette } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { JSX } from 'react';
 
+import { getFeaturedContent } from './lib/app';
+import { getList as getThemeList } from './lib/theme';
 import SelectPlatform from './select';
 
 const modules = [
   {
-    title: '应用',
+    title: '应用市场',
+    eyebrow: 'APP STORE',
     icon: AppWindow,
     href: '/apps',
-    color: 'text-sky-100',
-    description: '浏览车机应用、版本信息与详细介绍',
-    accent: 'from-sky-300/28 via-sky-100/12 to-transparent'
+    className: 'md:col-span-2 md:row-span-2'
   },
   {
-    title: '主题',
+    title: '主题中心',
+    eyebrow: 'THEMES',
     icon: Palette,
     href: '/themes?type=theme',
-    color: 'text-violet-100',
-    description: '挑选适配车机的主题风格与视觉资源',
-    accent: 'from-violet-300/28 via-violet-100/12 to-transparent'
+    className: ''
   },
   {
-    title: '壁纸',
-    icon: Image,
+    title: '精选壁纸',
+    eyebrow: 'WALLPAPERS',
+    icon: ImageIcon,
     href: '/themes?type=wallpaper',
-    color: 'text-emerald-100',
-    description: '快速查看并切换不同的高品质车机壁纸',
-    accent: 'from-emerald-300/28 via-emerald-100/12 to-transparent'
+    className: ''
   }
 ];
 
@@ -40,57 +40,73 @@ interface Props {
 async function EntryPage(props: Props): Promise<JSX.Element> {
   const searchParams = await props.searchParams;
   const platform = searchParams.platform || '4';
+  const [featuredContent, themes, wallpapers] = await Promise.all([
+    getFeaturedContent(platform),
+    getThemeList('theme', platform).catch(() => []),
+    getThemeList('wallpaper', platform).catch(() => [])
+  ]);
+  const moduleImages = [
+    featuredContent.banners[0]?.pictureUrl,
+    themes[0]?.landCover || featuredContent.banners[1]?.pictureUrl,
+    wallpapers[0]?.landCover || featuredContent.banners[2]?.pictureUrl
+  ];
 
   return (
-    <div className="flex grow flex-col justify-center gap-8">
-      <section className="surface-panel-strong relative overflow-hidden rounded-4xl px-6 py-8 sm:px-8 sm:py-10">
-        <div className="surface-highlight absolute inset-y-0 right-0 w-1/2 blur-3xl" />
-        <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_348px] lg:items-end">
-          <div className="space-y-5">
-            <div className="inline-flex items-center rounded-full border subtle-divider bg-white/10 px-4 py-1.5 text-xs tracking-[0.22em] text-white/76 uppercase">
-              DiLink
-            </div>
-            <div className="space-y-3">
-              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">欢迎使用 BYD Store</h1>
-              <p className="max-w-2xl text-base leading-7 text-white/84 sm:text-lg">
-                包含 DiLink 应用市场中的应用，以及百变主题中的主题与壁纸。
-              </p>
-            </div>
-          </div>
-          <div className="page-section flex flex-col gap-3">
-            <div className="text-sm tracking-[0.18em] text-white/68 uppercase">平台选择</div>
-            <div className="text-xl font-medium text-white">DiLink 平台</div>
-            <SelectPlatform platform={platform} />
-          </div>
+    <div className="flex flex-col gap-7">
+      <header className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <h1 className="page-title">BYD Store</h1>
+        <div className="grid w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-3 sm:w-auto">
+          <span className="shrink-0 text-sm text-white/72">当前平台</span>
+          <SelectPlatform platform={platform} />
+        </div>
+      </header>
+
+      <section aria-label="内容入口">
+        <div className="grid auto-rows-[210px] gap-4 md:grid-cols-2 md:auto-rows-[180px] lg:grid-cols-3">
+          {modules.map((item, index) => {
+            const Icon = item.icon;
+            const href = item.href + (item.href.includes('?') ? '&' : '?') + `platform=${platform}`;
+            const image = moduleImages[index];
+
+            return (
+              <Link
+                key={item.href}
+                href={href}
+                className={`group relative overflow-hidden rounded-lg border border-white/24 bg-[#647781] shadow-[0_12px_28px_rgba(43,56,64,0.14)] ${item.className}`}>
+                {image ? (
+                  <Image
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    src={image}
+                    alt=""
+                    fill
+                    sizes={item.className ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 34vw'}
+                    unoptimized
+                    priority={item.href === '/apps'}
+                  />
+                ) : (
+                  <Icon
+                    className="absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 text-white/18"
+                    strokeWidth={1.2}
+                  />
+                )}
+                <div className="scene-image-shade absolute inset-0" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
+                  <div>
+                    <div className="mb-2 flex items-center gap-2 text-xs text-white/72">
+                      <Icon className="size-4" strokeWidth={1.7} />
+                      <span>{item.eyebrow}</span>
+                    </div>
+                    <h3 className="text-2xl font-medium text-white">{item.title}</h3>
+                  </div>
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-white/90 text-[#33444d] transition-colors group-hover:bg-white">
+                    <ArrowRight className="size-5" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        {modules.map(item => {
-          const Icon = item.icon;
-          const href = item.href + (item.href.includes('?') ? '&' : '?') + `platform=${platform}`;
-
-          return (
-            <Link
-              key={item.href}
-              href={href}
-              className="surface-panel group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[30px] p-6 text-card-foreground transition-all hover:-translate-y-1 hover:bg-white/14">
-              <div className={`absolute inset-0 bg-linear-to-br ${item.accent}`} />
-              <div className="relative flex items-start justify-between">
-                <div className="rounded-3xl border subtle-divider bg-white/12 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
-                  <Icon className={`size-10 ${item.color}`} strokeWidth={1.6} />
-                </div>
-                <div className="rounded-full border subtle-divider bg-white/8 px-3 py-1 text-xs tracking-[0.18em] text-white/68 uppercase">
-                  进入
-                </div>
-              </div>
-              <div className="relative space-y-3">
-                <h2 className="text-3xl font-semibold text-white">{item.title}</h2>
-                <p className="min-h-12 text-sm leading-6 text-white/80">{item.description}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
     </div>
   );
 }

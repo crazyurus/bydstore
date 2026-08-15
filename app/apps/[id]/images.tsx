@@ -27,17 +27,19 @@ function Images(props: Props): JSX.Element {
         {images.map(item => (
           <Dialog key={item}>
             <DialogTrigger asChild>
-              <div className="surface-panel group relative shrink-0 overflow-hidden rounded-[26px]">
+              <button
+                className="group relative shrink-0 overflow-hidden rounded-lg border border-white/18 bg-white/8 text-left focus-visible:ring-2 focus-visible:ring-white/60"
+                type="button"
+                aria-label="查看应用截图">
                 <Image
                   src={item}
                   alt="screenshot"
-                  className="h-[170px] w-[304px] cursor-pointer object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-[170px] w-[304px] object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                   width={304}
                   height={170}
                   loading="lazy"
                 />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-slate-950/30 to-transparent" />
-              </div>
+              </button>
             </DialogTrigger>
             <DialogContent className="max-w-4xl">
               <DialogHeader>
@@ -47,7 +49,7 @@ function Images(props: Props): JSX.Element {
                 key={item}
                 src={item}
                 alt="screenshot"
-                className="max-h-[75vh] w-full rounded-[22px] object-cover"
+                className="max-h-[75vh] w-full rounded-lg object-contain"
                 width={1100}
                 height={620}
                 loading="lazy"

@@ -80,7 +80,7 @@ function Field({
       role="group"
       data-slot="field"
       data-orientation={orientation}
-      className={cn('surface-panel rounded-[24px] p-4 sm:p-5', fieldVariants({ orientation }), className)}
+      className={cn('surface-panel p-4 sm:p-5', fieldVariants({ orientation }), className)}
       {...props}
     />
   );

@@ -6,10 +6,7 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        'surface-panel text-card-foreground relative flex flex-col gap-6 overflow-hidden rounded-[28px] py-6',
-        className
-      )}
+      className={cn('surface-panel text-card-foreground relative flex flex-col gap-6 overflow-hidden py-6', className)}
       {...props}
     />
   );

@@ -7,12 +7,12 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const toggleVariants = cva(
-  'inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium whitespace-nowrap text-white/66 transition-all duration-200 hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-white data-[state=on]:text-[#4b6071] data-[state=on]:shadow-[0_12px_28px_rgba(23,35,46,0.16)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
+  'inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap text-white/70 transition-colors duration-200 hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-[#dfe4ec] data-[state=on]:text-[#2f3f47] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
   {
     variants: {
       variant: {
         default: 'bg-transparent',
-        outline: 'border border-white/12 bg-white/6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]'
+        outline: 'border border-white/12 bg-white/6'
       },
       size: {
         default: 'h-11 min-w-11 px-4',

@@ -1,42 +1,40 @@
-import { Item, ItemActions, ItemContent, ItemGroup, ItemMedia } from '@/components/ui/item';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Loading() {
   return (
-    <div className="flex flex-col gap-6">
-      <section className="surface-panel-strong rounded-[30px] px-6 py-6 sm:px-8 sm:py-7">
-        <div className="space-y-3">
-          <Skeleton className="h-7 w-24 rounded-full bg-white/12" />
-          <Skeleton className="h-12 w-40 rounded-2xl bg-white/12" />
-          <Skeleton className="h-6 w-80 max-w-full rounded-2xl bg-white/8" />
+    <div className="flex flex-col gap-7">
+      <div className="flex items-center justify-between">
+        <div className="flex gap-5">
+          <Skeleton className="h-10 w-24 bg-white/12" />
+          <Skeleton className="h-10 w-24 bg-white/8" />
         </div>
-      </section>
-      <div className="p-2 sm:p-2.5">
-        <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-2 rounded-full border  subtle-divider bg-white/6 p-1.5 backdrop-blur-xl">
-          {[1, 2, 3, 4, 5].map(i => (
-            <Skeleton key={i} className="h-11 w-20 rounded-full bg-white/10 sm:w-24" />
-          ))}
-        </div>
+        <Skeleton className="h-10 w-64 max-w-[45vw] bg-white/10" />
       </div>
-      <ItemGroup className="flex w-full gap-4">
-        {[1, 2, 3, 4, 5].map(i => (
-          <Item className="flex w-full flex-col items-start gap-4 sm:flex-row sm:items-center" key={i}>
-            <div className="flex gap-4 grow sm:w-0">
-              <ItemMedia variant="image" className="size-16">
-                <Skeleton className="size-16 rounded-[18px] bg-white/12" />
-              </ItemMedia>
-              <ItemContent className="flex flex-1 flex-col gap-1">
-                <Skeleton className="h-6 w-40 rounded-full bg-white/12" />
-                <Skeleton className="h-6 w-22 rounded-full bg-white/10" />
-                <Skeleton className="h-5 w-72 rounded-full bg-white/8" />
-              </ItemContent>
-            </div>
-            <ItemActions>
-              <Skeleton className="h-9 w-28 rounded-full bg-white/12" />
-            </ItemActions>
-          </Item>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        {[1, 2, 3].map(item => (
+          <Skeleton key={item} className="h-48 bg-white/12" />
         ))}
-      </ItemGroup>
+      </div>
+
+      <div className="flex items-end justify-between gap-5">
+        <div>
+          <Skeleton className="h-8 w-36 bg-white/12" />
+          <Skeleton className="mt-2 h-4 w-20 bg-white/8" />
+        </div>
+        <Skeleton className="h-11 w-96 max-w-[55vw] bg-white/10" />
+      </div>
+
+      <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        {Array.from({ length: 18 }, (_, index) => (
+          <div key={index} className="flex flex-col items-center px-3 py-4">
+            <Skeleton className="size-20 bg-white/12" />
+            <Skeleton className="mt-3 h-5 w-24 bg-white/10" />
+            <Skeleton className="mt-2 h-3 w-16 bg-white/8" />
+            <Skeleton className="mt-3 h-8 w-24 bg-white/10" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
